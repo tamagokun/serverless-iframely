@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/iframe.ts": {
-      "includeFiles": "node_modules/iframely/lib/cache-engines/*.js"
+      "includeFiles": "node_modules/iframely/**"
     }
   }
 }
