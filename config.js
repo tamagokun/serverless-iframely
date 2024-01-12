@@ -9,6 +9,7 @@ export default {
   RICH_LOG_ENABLED: false,
   DISABLE_SERVE_STATIC: true,
 
+  CACHE_ENGINE: "no-cache",
   CUSTOM_PLUGINS_PATH: __dirname + "/plugins",
 
   baseAppUrl: "http://localhost",
