@@ -7,9 +7,6 @@ import * as whitelist from "iframely/lib/whitelist.js";
 import * as iframelyUtils from "iframely/lib/utils.js";
 // @ts-ignore
 import * as iframelyCore from "iframely";
-// import node-cache so it is included in build
-// @ts-ignore
-import "iframely/lib/cache-engines/node-cache.js";
 
 export default async function handler(
   request: VercelRequest,
