@@ -1,0 +1,8 @@
+{
+  "name": "serverless-iframely",
+  "type": "module",
+  "dependencies": {
+    "@vercel/node": "^3.0.16",
+    "iframely": "^2.3.0"
+  }
+}
