@@ -12,6 +12,9 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse
 ) {
+  response.setHeader("Access-Control-Allow-Credentials", "true");
+  response.setHeader("Access-Control-Allow-Origin", "*");
+
   const uri = prepareUri(String(request.query.uri || request.query.url || ""));
 
   if (!uri) {
