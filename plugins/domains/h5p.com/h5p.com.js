@@ -9,7 +9,7 @@ export default {
         title: meta["html-title"],
         height: 400,
       },
-      rel: [CONFIG.R.inline],
+      rel: [CONFIG.R.html5],
       type: CONFIG.T.text_html,
     };
   },
