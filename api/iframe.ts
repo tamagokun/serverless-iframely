@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { prepareUri } from "../utils/url.js";
+import { murmurHash, prepareUri } from "../utils/url.js";
 import { run } from "../utils/iframely.js";
 // @ts-ignore
 import * as whitelist from "iframely/lib/whitelist.js";
@@ -7,6 +7,14 @@ import * as whitelist from "iframely/lib/whitelist.js";
 import * as iframelyUtils from "iframely/lib/utils.js";
 // @ts-ignore
 import * as iframelyCore from "iframely";
+
+type IFramelyResponse = {
+  id?: string;
+  meta: Record<string, string>;
+  html?: string;
+  links: any[];
+  rel?: string[];
+};
 
 export default async function handler(
   request: VercelRequest,
@@ -24,7 +32,7 @@ export default async function handler(
   }
 
   try {
-    let result = await run(uri, {
+    let result = (await run(uri, {
       v: "1.3",
       //   debug: true,
       //   returnProviderOptionsUsage: true,
@@ -37,9 +45,8 @@ export default async function handler(
       promoUri: undefined,
       refresh: true,
       providerOptions: {},
-    });
+    })) as IFramelyResponse;
 
-    // @ts-expect-error
     iframelyCore.sortLinks(result.links);
 
     iframelyUtils.filterLinks(result, {
@@ -56,6 +63,10 @@ export default async function handler(
       omitInlineStyles: false,
       forceWidthLimitContainer: false,
     });
+
+    if (!result.id) {
+      result.id = murmurHash(uri);
+    }
 
     return response.json(result);
   } catch (err) {
