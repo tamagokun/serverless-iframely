@@ -4,10 +4,6 @@
   "dependencies": {
     "@vercel/node": "^3.0.16",
     "iframely": "^2.3.0",
-    "node-cache": "^1.1.0",
-    "patch-package": "^8.0.0"
-  },
-  "scripts": {
-    "postinstall": "patch-package"
+    "node-cache": "^1.1.0"
   }
 }

@@ -34,8 +34,8 @@ export default async function handler(
   try {
     let result = (await run(uri, {
       v: "1.3",
-      debug: true,
-      returnProviderOptionsUsage: true,
+      //   debug: true,
+      //   returnProviderOptionsUsage: true,
       mixAllWithDomainPlugin: false,
       forceParams: null,
       whitelist: false,
