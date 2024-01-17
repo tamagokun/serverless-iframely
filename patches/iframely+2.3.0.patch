@@ -1,14 +1,29 @@
 diff --git a/node_modules/iframely/lib/core.js b/node_modules/iframely/lib/core.js
-index 5c01cb3..9694105 100644
+index 5c01cb3..164e8d5 100644
 --- a/node_modules/iframely/lib/core.js
 +++ b/node_modules/iframely/lib/core.js
-@@ -467,6 +467,9 @@
+@@ -428,6 +428,7 @@
+                 if (plugin.mixinAllGeneric) {
+                     options.mixAllWithDomainPlugin = true;
+                 }
++
+             }
+ 
+             if (!options.useOnlyGenericPlugins) {
+@@ -467,6 +468,7 @@
                  }
              }
  
-+            console.log(JSON.stringify({uri, domain, pluginMatchesByDomains}, null, 2))
-+
 +
              // In domain debug: add all plugins before domain plugins to make them low priority.
              if (options.mixAllWithDomainPlugin) {
+                 addAllGeneric();
+@@ -503,6 +505,8 @@
+                 }
+             }
+ 
++            console.log(JSON.stringify({uri, domain, pluginMatchesByDomains, matchedPluginsNames, initialPlugins}, null, 2))
++
+             // If not domain or no domain plugins - fill with generic.
+             if (initialPlugins.length === 0) {
                  addAllGeneric();
